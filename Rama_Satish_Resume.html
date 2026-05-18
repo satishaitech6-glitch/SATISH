@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rama Satish Yarrabolu - Resume</title>
+<style>
+  :root {
+    --text-main: #333;
+    --text-muted: #555;
+    --accent: #1A6FA8;
+    --bg-main: #fff;
+    --border: #ddd;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: var(--font-main);
+    color: var(--text-main);
+    background: #f4f7f6;
+    line-height: 1.5;
+    padding: 2rem;
+  }
+  
+  .resume-container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--bg-main);
+    padding: 3rem 4rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .header h1 {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .header .title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .header .contact-info {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .header .contact-info span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .header .contact-info a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .header .contact-info a:hover {
+    color: var(--accent);
+  }
+
+  /* Section Styles */
+  .section {
+    margin-bottom: 1.8rem;
+  }
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Text Content */
+  p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    text-align: justify;
+  }
+
+  /* Education */
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+  }
+  .edu-left {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.95rem;
+  }
+  .edu-inst {
+    font-weight: normal;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .edu-right {
+    text-align: right;
+    font-size: 0.9rem;
+  }
+  .edu-score {
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .skill-row strong {
+    color: var(--text-main);
+    display: inline-block;
+    width: 180px;
+  }
+
+  /* Projects */
+  .project-item {
+    margin-bottom: 1.2rem;
+  }
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.3rem;
+  }
+  .project-title {
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--text-main);
+  }
+  .project-date {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .project-desc {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .project-desc ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 0.5rem;
+  }
+  .project-desc li {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+  }
+  .project-tech {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    font-style: italic;
+  }
+
+  /* Certifications */
+  .cert-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    list-style-position: inside;
+  }
+  .cert-list li {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* Print Styles */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .resume-container { box-shadow: none; padding: 0; max-width: 100%; }
+    .print-btn-wrapper { display: none; }
+  }
+
+  /* Print Button */
+  .print-btn-wrapper {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .print-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  .print-btn:hover {
+    background: #155a8a;
+  }
+
+  @media (max-width: 600px) {
+    .resume-container { padding: 1.5rem; }
+    .header h1 { font-size: 2rem; }
+    .edu-item, .project-header { flex-direction: column; }
+    .edu-right, .project-date { text-align: left; margin-top: 0.2rem; }
+    .cert-list { grid-template-columns: 1fr; }
+    .skill-row strong { display: block; width: 100%; margin-bottom: 0.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-btn-wrapper">
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="resume-container">
+  
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Rama Satish Yarrabolu</h1>
+    <div class="title">Fresher | AI & ML Engineer | Cloud AI</div>
+    <div class="contact-info">
+      <span>✉ <a href="mailto:satishaitech6@gmail.com">satishaitech6@gmail.com</a></span>
+      <span>📞 <a href="tel:+919398106569">+91-9398106569</a></span>
+      <span>📍 Hyderabad, Telangana</span>
+      <span>🔗 <a href="https://linkedin.com/in/rama-satish-2a9bb7256" target="_blank">linkedin.com/in/rama-satish-2a9bb7256</a></span>
+    </div>
+  </div>
+
+  <!-- OBJECTIVE -->
+  <div class="section">
+    <div class="section-title">Objective</div>
+    <p>B.Tech graduate in AI & Machine Learning with hands-on project experience in deep learning, cloud AI (Azure AI Foundry, Azure OpenAI), RAG pipelines, and conversational AI. Proficient in Python, TensorFlow, PyTorch, and MLflow. Seeking an entry-level AI/ML Engineer role to build scalable AI-powered solutions.</p>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    
+    <div class="edu-item">
+      <div class="edu-left">B.Tech – Artificial Intelligence & Machine Learning <span class="edu-inst">| Sree Vahini Institute of Science & Technology, Tiruvuru</span></div>
+      <div class="edu-right">2021 – 2025 <br> <span class="edu-score">CGPA: 7.65</span></div>
+    </div>
+    
+    <div class="edu-item">
+      <div class="edu-left">Intermediate – MPC <span class="edu-inst">| Surya Junior College, Jangareddygudem</span></div>
+      <div class="edu-right">2019 – 2021 <br> <span class="edu-score">92%</span></div>
+    </div>
+    
+    <div class="edu-item">
+      <div class="edu-left">SSC <span class="edu-inst">| Z.P.P. High School, Kamayyapalem</span></div>
+      <div class="edu-right">2019 <br> <span class="edu-score">GPA: 9.0</span></div>
+    </div>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row"><strong>Languages:</strong> Python, SQL, HTML, CSS, Bash</div>
+      <div class="skill-row"><strong>AI / ML:</strong> TensorFlow, PyTorch, Scikit-learn, XGBoost, SHAP</div>
+      <div class="skill-row"><strong>Generative AI & LLM:</strong> Azure OpenAI (GPT-4o), RAG Pipelines, LangChain, Prompt Engineering</div>
+      <div class="skill-row"><strong>Cloud & MLOps:</strong> Azure AI Foundry, Azure AI Search, MLflow, Docker, CI/CD</div>
+      <div class="skill-row"><strong>Frameworks & APIs:</strong> Flask, FastAPI, Copilot Studio, Power Automate</div>
+      <div class="skill-row"><strong>Tools:</strong> Git, MySQL, Azure DevOps, Dataverse, Pipedream</div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+    
+    <div class="project-item">
+      <div class="project-header">
+        <div class="project-title">Heart Disease Prediction – ML & Deep Learning</div>
+        <div class="project-date">Mar–Apr 2025</div>
+      </div>
+      <div class="project-desc">
+        <ul>
+          <li>Compared ML models (Logistic Regression, Random Forest, XGBoost) and a PyTorch neural network; XGBoost achieved best F1 score of 0.88 on a 303-record patient dataset.</li>
+          <li>Applied SMOTE, GridSearchCV, and MLflow tracking; containerized with Docker and exposed via Flask REST API; deployed to Azure ML endpoint (AUC-ROC: 0.91).</li>
+        </ul>
+      </div>
+      <div class="project-tech">Python • PyTorch • XGBoost • MLflow • Docker • Flask • Azure ML</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <div class="project-title">Customer Churn Prediction & Analysis</div>
+        <div class="project-date">Jan–Mar 2025</div>
+      </div>
+      <div class="project-desc">
+        <ul>
+          <li>Built end-to-end ML pipeline on 7,000+ telecom records using Scikit-learn & XGBoost (87% accuracy, 0.85 AUC-ROC); visualized top churn drivers with SHAP plots.</li>
+          <li>Packaged as a FastAPI inference module with MLflow versioning, Azure Blob Storage artifacts, and GitHub Actions CI/CD for automated retraining.</li>
+        </ul>
+      </div>
+      <div class="project-tech">Python • Scikit-learn • XGBoost • SHAP • FastAPI • MLflow • CI/CD</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <div class="project-title">Intelligent Document Q&A – Azure AI Foundry <span style="font-weight:normal; color:#555;">| NxtWave</span></div>
+        <div class="project-date">Feb–Mar 2025</div>
+      </div>
+      <div class="project-desc">
+        <ul>
+          <li>Built a RAG pipeline integrating GPT-4o with Azure AI Search (hybrid retrieval); achieved groundedness score of 4.3/5; reduced hallucinations by 35% via chain-of-thought prompting.</li>
+          <li>Developed LangChain-based PDF ingestion with ada-002 embeddings and semantic ranking; deployed as a Dockerized Flask endpoint with async streaming.</li>
+          <li>Evaluated system end-to-end using Azure AI Foundry’s evaluation suite (groundedness, relevance, coherence); iterated prompt templates based on metrics to improve answer quality across diverse document types.</li>
+        </ul>
+      </div>
+      <div class="project-tech">Azure AI Foundry • GPT-4o • RAG • LangChain • Vector Search • Docker • Flask</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <div class="project-title">AI Customer Support Chatbot – Copilot Studio <span style="font-weight:normal; color:#555;">| NxtWave</span></div>
+        <div class="project-date">Mar–Apr 2025</div>
+      </div>
+      <div class="project-desc">
+        <ul>
+          <li>Built multi-turn conversational AI agent in Copilot Studio with intent recognition, adaptive cards, and SharePoint + Power Automate integration; published to Teams (200+ test users), reducing manual support by ~60%.</li>
+          <li>Configured Dataverse to log conversation records and unresolved tickets; monitored agent KPIs (CSAT, escalation rate, session outcomes) via Copilot Studio analytics dashboard and extended chatbot with a custom Azure Function connector for real-time order status lookups.</li>
+        </ul>
+      </div>
+      <div class="project-tech">Copilot Studio • Power Automate • Azure AD • Dataverse • Teams • SQL</div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <ul class="cert-list">
+      <li>Full Stack Python – SkillDzire & APSCHE (2024)</li>
+      <li>Data Science & AIML Bootcamp & Hackathon</li>
+      <li>MERN Full-Stack – APSCHE & Edubot (2025)</li>
+      <li>Programming Foundations with Python</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>
